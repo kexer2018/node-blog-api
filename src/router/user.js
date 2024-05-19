@@ -11,6 +11,8 @@ const {
   validateUserUpdate,
 } = require('../utils/validator/user.validator')
 
+const verifyToken = require('../utils/middleware/verify-token')
+
 /**
  * test
  */
@@ -28,14 +30,16 @@ router.post(
 router.post('/login', validateUserLogin, handleValidationErrors, userCtl.login)
 
 router.put(
-  '/update',
+  '/update/:id',
+  verifyToken,
   validateUserUpdate,
   handleValidationErrors,
   userCtl.update
 )
 
 router.post(
-  '/toggle-favorite',
+  '/toggle-favorite/:id',
+  verifyToken,
   validateUserFollow,
   handleValidationErrors,
   userCtl.toggleFavorite
