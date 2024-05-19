@@ -12,11 +12,11 @@
   "description": "个人博客的后端接口开发",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "express-validator": "^7.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.3.0",
-    "class-validator": "^0.14.1",
     "eslint": "^9.3.0",
     "globals": "^15.2.0",
     "jsonwebtoken": "^9.0.2",
