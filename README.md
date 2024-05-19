@@ -7,7 +7,7 @@ express+mysql+sequelize，博客系统的后端API基础功能，练习项目
 用户注册：POST /register
 用户登录：POST /login
 更新用户信息：PUT /update
-关注文章：POST /follow
+关注文章/取消关注文章：POST /toggle-favorite
 
 ## 文章
 创建文章：POST /articles
@@ -15,7 +15,6 @@ express+mysql+sequelize，博客系统的后端API基础功能，练习项目
 获取单个文章：GET /articles/:id
 更新文章：PUT /articles/:id
 删除文章：DELETE /articles/:id
-查询点赞人数：GET /articles/star/:id
 查询关注列表： GET /articles/followers/:id
 
 # 技术栈
