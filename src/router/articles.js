@@ -1,28 +1,31 @@
 const express = require('express')
 const router = express.Router()
 
-router.post('/', (req, res) => {
-  res.send('create')
-})
-router.get('/', (req, res) => {
-  res.send('list')
-})
+const handleValidationErrors = require('../utils/middleware/error.middleware')
+const verifyToken = require('../utils/middleware/verify-token')
+const articleCtl = require('../controller/article.controller')
 
-router.get('/:id', (req, res) => {
-  res.send('info')
-})
+const {
+  validateAddAriticle,
+  validateGetList,
+  validateGetInfo,
+  validateUpdateArticle,
+  validateDeleteArticle,
+  validateGetFollowerList,
+} = require('../utils/validator/ariticle.validator')
 
-router.put('/:id', (req, res) => {
-  res.send('update')
-})
+router.use(handleValidationErrors)
+router.use(verifyToken)
 
-router.delete('/:id', (req, res) => {
-  res.send('delete')
-})
-
-
-router.get('/followers/:id', (req, res) => {
-  res.send('list')
-})
+router.post('/', validateAddAriticle, articleCtl.create)
+router.get('/', validateGetList, articleCtl.getList)
+router.get('/:id', validateGetInfo, articleCtl.getInfo)
+router.put('/:id', validateUpdateArticle, articleCtl.update)
+router.delete('/:id', validateDeleteArticle, articleCtl.deleteRecord)
+router.get(
+  '/followers/:id',
+  validateGetFollowerList,
+  articleCtl.getFollowerList
+)
 
 module.exports = router

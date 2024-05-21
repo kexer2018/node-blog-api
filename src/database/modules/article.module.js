@@ -6,6 +6,10 @@ const User = require('./user.module')
 const Article = sequelize.define(
   'Article',
   {
+    articleId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,

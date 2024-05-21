@@ -27,7 +27,7 @@ async function register(username, password, email) {
     })
     return '注册成功'
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err.message)
   }
 }
 
